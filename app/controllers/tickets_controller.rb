@@ -20,6 +20,12 @@ class TicketsController < ApplicationController
     @tickets = Ticket.where(:user_id => nil)
   end
 
+  def versions
+    @ticket = Ticket.find(params[:id])
+    @ticket = @ticket.version_at(params[:timestamp]).recify
+    @ticket.save
+  end
+
   # GET /tickets
   # GET /tickets.json
   def index

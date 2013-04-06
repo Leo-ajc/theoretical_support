@@ -1,0 +1,8 @@
+= @ticket.versions.each do |version|
+  - version.recify = ticket
+  = "Changed by: #{User.find(version.whodunnit.to_i).email}, #{time_ago_in_words(version.created_at)}"
+  = "Event: #{version.event}"
+  =# button_to "New", :action => "restore_ticket/"
+  = button_to 'restore', '', :class => 'btn btn-success'
+  = render :partial => 'list', :locals => {:ticket => version.recify}
+

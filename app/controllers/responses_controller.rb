@@ -29,6 +29,17 @@ class ResponsesController < ApplicationController
     end
   end
 
+  def versions
+    @response = Response.find(params[:id])
+  end
+
+  def restore
+    @response = Response.find(params[:id])
+    @response = @response.version_at(Time.zone.parse(params[:timestamp])).previous_version
+    @response.save
+    redirect_to ticket_url(:id => @response.ticket.id)
+  end
+
   def edit
     @response = Response.find(params[:id])
   end

@@ -1,0 +1,28 @@
+
+%table.table
+  %tr
+    %th Changed by
+    %th Event
+    %th Body
+    %th updated_at
+    %th
+
+    - @response.versions.each do |version|
+      - response = version.reify
+      %tr
+        %td= User.find(version.whodunnit.to_i).email
+        %td= version.event
+        %td= (response ? response.body : '-')
+        %td= version.created_at
+        %td
+          = button_to 'restore', restore_response_url(:id => @response.id, :timestamp => version.created_at)
+
+    %tr.success
+      %td
+      %td
+      %td= @response.body
+      %td
+        %strong Current
+      %td
+
+

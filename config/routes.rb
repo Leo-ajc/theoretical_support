@@ -17,5 +17,12 @@ SupportFu::Application.routes.draw do
 
   match 'search/(:serial_code)' => 'search#search', :as => 'serial_code_search'
 
+  #post "versions/:model/:id/revert" => "versions#revert", :as => "revert_version"
+  post 'ticket/restore' => 'tickets#restore', :as => 'restore_ticket'
+  get 'ticket/:id/versions' => 'tickets#versions', :as => 'ticket_versions'
+
+  post 'response/:id/:timestamp/restore' => 'responses#restore', :as => 'restore_response'
+  get 'response/:id/versions' => 'responses#versions', :as => 'response_versions'
+
   resources :users, :sessions, :password_resets, :clients, :tickets, :responses
 end

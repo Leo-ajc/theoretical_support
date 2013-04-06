@@ -112,6 +112,9 @@ GEM
     net-http-persistent (2.8)
     nokogiri (1.5.9)
     ntlm-http (0.1.1)
+    paper_trail (2.7.1)
+      activerecord (~> 3.0)
+      railties (~> 3.0)
     pg (0.15.0)
     polyglot (0.3.3)
     pry (0.9.12)
@@ -222,6 +225,7 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   mysql2
+  paper_trail (~> 2)
   pg
   pry
   rails (= 3.2.13)

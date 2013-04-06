@@ -5,6 +5,7 @@
 
     %th Staff Member
     %th Body
+    %th versions
     %th
     %th
     %th
@@ -14,6 +15,7 @@
     %tr
       %td=( response.user_id ? response.user.name : 'none' )
       %td= response.body
+      %td= link_to response.versions.length, response_versions_url(:id => response.id)
       %td= "#{time_ago_in_words(response.updated_at)} ago"
       %td= link_to 'Show', response
       %td= link_to 'Edit', edit_response_path(response), :class => 'btn btn-mini'

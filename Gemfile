@@ -5,6 +5,8 @@ ruby '1.9.3'
 
 gem 'rails', '3.2.13'
 
+gem 'paper_trail', '~> 2'
+
 gem 'simple_form' # form data layout building.
 gem "haml"
 gem "haml-rails"

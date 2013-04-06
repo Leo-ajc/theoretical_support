@@ -18,7 +18,12 @@ class ApplicationController < ActionController::Base
   end
 
   def set_special_layout
-    self.class.layout 'client_interface' unless current_user
+    #binding.pry
+    if !current_user
+      self.class.layout 'client_interface'
+    else
+      self.class.layout 'application'
+    end
   end
 
 end
