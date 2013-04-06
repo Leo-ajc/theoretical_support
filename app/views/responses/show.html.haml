@@ -1,0 +1,14 @@
+=# render :partial => 'tickets/details', :locals => {:ticket => @ticket}
+
+%p#notice= notice
+
+%p
+  %b Ticket:
+  = @response.ticket_id
+%p
+  %b User:
+  = @response.user_id
+%p
+  %b Body:
+  = @response.body
+

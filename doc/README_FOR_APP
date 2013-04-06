@@ -1,2 +1,17 @@
-Use this README file to introduce your application and point to useful places in the API for learning more.
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+Demonstration support ticketing system for fictional hosting company.
+
+Quick Start:
+
+rake db:schema:load
+rake db:seed
+
+Client side interface starts with:
+
+/new_client_ticket
+
+Employees can start here:
+
+/login
+
+
+

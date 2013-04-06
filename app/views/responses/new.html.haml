@@ -1,0 +1,8 @@
+%h2 Ticket:
+= render :partial => 'tickets/list', :locals => {:tickets => [@ticket]}
+
+%h2 Responses:
+= render :partial => 'responses/list', :locals => {:responses => @ticket.responses}
+
+.well
+  = render 'form'

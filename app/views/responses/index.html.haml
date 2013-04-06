@@ -1,0 +1,23 @@
+%h1 Listing actions
+
+%table
+  %tr
+    %th Ticket
+    %th User
+    %th Body
+    %th
+    %th
+    %th
+
+  - @responses.each do |response|
+    %tr
+      %td= response.ticket_id
+      %td= response.user_id
+      %td= response.body
+      %td= link_to 'Show', response
+      %td= link_to 'Edit', edit_action_path(resonse)
+      %td= link_to 'Destroy', response, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Action', new_response_path

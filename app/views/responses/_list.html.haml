@@ -1,0 +1,22 @@
+
+
+%table.table
+  %tr
+
+    %th Staff Member
+    %th Body
+    %th
+    %th
+    %th
+    %th
+
+  - responses.each do |response|
+    %tr
+      %td=( response.user_id ? response.user.name : 'none' )
+      %td= response.body
+      %td= "#{time_ago_in_words(response.updated_at)} ago"
+      %td= link_to 'Show', response
+      %td= link_to 'Edit', edit_response_path(response), :class => 'btn btn-mini'
+      %td= link_to 'Destroy', response, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
+
+%br

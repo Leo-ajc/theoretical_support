@@ -1,11 +1,13 @@
 class User < ActiveRecord::Base
   has_secure_password
-  attr_accessible :email, :password, :password_confirmation, :password_digest
-  validates_presence_of :password, :email, :on => [:create, :update]
+  attr_accessible :email, :password, :password_confirmation, :password_digest, :name
+  validates_presence_of :password, :email, :name, :on => :create
   validates_confirmation_of :password
   validates_uniqueness_of :email
 
   before_create { generate_token(:auth_token) }
+
+  has_and_belongs_to_many :tickets
 
   def send_password_reset
     generate_token(:password_reset_token)

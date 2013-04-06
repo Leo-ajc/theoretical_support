@@ -1,0 +1,6 @@
+
+%h2 Search by serial code
+
+- if @ticket
+  = render :partial => 'tickets/list', :locals => {:tickets => [@ticket]}
+

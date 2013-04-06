@@ -1,0 +1,27 @@
+%table.table.table-striped
+  %tr
+    %th Serial Code
+    %th Status
+    %th Body
+    %th Department
+    %th Assigned Staff
+    %th Client's email address
+    %th
+    %th
+
+  - tickets.each do |ticket|
+    %tr
+      %td= link_to ticket.serial_code, ticket
+      %td= ticket.status.description
+      %td= ticket.body
+      %td= ticket.department.name
+      %td
+        - if ticket.user
+          = ticket.user.email
+        - else
+          None
+      %td= ticket.email
+      %td= link_to 'Edit', edit_ticket_path(ticket), :class => 'btn btn-mini'
+      %td= link_to 'Destroy', ticket, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
+
+%br

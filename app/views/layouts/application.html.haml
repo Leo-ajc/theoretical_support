@@ -9,18 +9,40 @@
   %body
     .container
       #user_nav
-        - if current_user
-          %span== Logged in as "#{current_user.email}.
+        .navbar.navbar-inverse.navbar-fixed-top
+          .navbar-inner
+            .container
+              = link_to 'Support Fu', root_url, :class => 'brand'
+              - if current_user
+                %ul.nav
+                  %li
+                    = link_to "New Tickets", unassigned_tickets_url
+                  %li
+                    = link_to "Open Tickets", open_tickets_url
+                  %li
+                    = link_to "On Hold Tickets", on_hold_tickets_url
+                  %li
+                    = link_to "Closed Tickets", closed_tickets_url
+                .pull-right
+                  %span
+                    |
+                    = link_to "Log out", logout_path, :class => 'btn btn-warning'
 
-          %span= link_to "Log out", logout_path
-        - else
-          %span= link_to "Sign up", signup_path
-          of
-          %span= link_to "log in", login_path
+                = form_tag serial_code_search_path, :class => 'navbar-form pull-right' do
+                  = text_field_tag 'serial_code', nil, :placeholder => 'Serial Code', :class => 'span2'
+                  = submit_tag 'Search', :class => 'btn btn-primary'
+              - else
+                %span.pull-right
+                  = link_to "Log in...", login_path, :class => 'btn btn-success'
 
-      - flash.each do |name, msg|
-        = content_tag :div, msg, :id => "flash_#{name}"
+        .container
 
-      = yield
+        - flash.each do |name, msg|
+          .alert{:class => (name == :notice ? "success" : "error")}
+            %a.close{:data => {:dismiss => "alert"}}
+              x
+            = msg
+
+        = yield
 
 

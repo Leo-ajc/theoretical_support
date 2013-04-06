@@ -5,3 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Status.create([
+  { description: 'Waiting for Staff Response'},
+  { description: 'Waiting for Customer'},
+  { description: 'On Hold'},
+  { description: 'Cancelled'},
+  { description: 'Completed'}
+])
+
+Department.create([
+  { name: 'billing' },
+  { name: 'accounts' },
+  { name: 'hosting' },
+  { name: 'database' }
+])
+

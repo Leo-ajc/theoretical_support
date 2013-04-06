@@ -1,0 +1,10 @@
+%h2 Ticket:
+= render :partial => 'tickets/list', :locals => {:tickets => [@ticket]}
+
+%h2 Responses
+
+= render :partial => 'responses/list', :locals => {:responses => @ticket.responses}
+
+= link_to 'Add new Response...', new_response_url(:serial_code => @ticket.serial_code)
+%br
+%br

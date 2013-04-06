@@ -1,15 +1,15 @@
+
 %h1 Sign Up
 
 = simple_form_for @user, :html => { :class => 'form-horizontal' } do |f|
   %p
-    = f.label :name
-    = f.text_field :name
+    = f.input :email
   %p
-    = f.label :password
-    = f.password_field :password
+    = f.input :name
   %p
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation
+    = f.input :password
+  %p
+    = f.input :password_confirmation
     %br
   .form-actions
     = f.submit :class => 'btn btn-primary'

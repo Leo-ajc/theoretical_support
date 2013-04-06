@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to root_url, :notice => "Signed up!"
+      cookies[:auth_token] = @user.auth_token
+      redirect_to unassigned_tickets_path, :notice => "Signed up!"
     else
       render "new"
     end
