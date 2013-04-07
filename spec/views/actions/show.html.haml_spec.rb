@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "actions/show" do
   before(:each) do
-    @action = assign(:action, stub_model(Action,
+    @response = assign(:action, stub_model(Action,
       :ticket_id => 1,
       :user_id => 2,
       :body => "MyText"

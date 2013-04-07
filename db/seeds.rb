@@ -10,6 +10,7 @@ Status.create([
   { description: 'Waiting for Staff Response'},
   { description: 'Waiting for Customer'},
   { description: 'On Hold'},
+  { description: 'Open'},
   { description: 'Cancelled'},
   { description: 'Completed'}
 ])

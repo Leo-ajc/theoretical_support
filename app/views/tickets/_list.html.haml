@@ -4,6 +4,7 @@
     %th Status
     %th Body
     %th Department
+    %th Versions
     %th Assigned Staff
     %th Client's email address
     %th
@@ -15,6 +16,7 @@
       %td= ticket.status.description
       %td= ticket.body
       %td= ticket.department.name
+      %td= link_to ticket.versions.length, ticket_versions_url(:id => ticket.id)
       %td
         - if ticket.user
           = ticket.user.email

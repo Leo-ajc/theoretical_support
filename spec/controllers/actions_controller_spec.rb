@@ -35,7 +35,7 @@ describe ActionsController do
   end
 
   describe "GET index" do
-    it "assigns all actions as @actions" do
+    it "assigns all actions as @responses" do
       action = Action.create! valid_attributes
       get :index, {}, valid_session
       assigns(:actions).should eq([action])
@@ -43,7 +43,7 @@ describe ActionsController do
   end
 
   describe "GET show" do
-    it "assigns the requested action as @action" do
+    it "assigns the requested action as @response" do
       action = Action.create! valid_attributes
       get :show, {:id => action.to_param}, valid_session
       assigns(:action).should eq(action)
@@ -51,14 +51,14 @@ describe ActionsController do
   end
 
   describe "GET new" do
-    it "assigns a new action as @action" do
+    it "assigns a new action as @response" do
       get :new, {}, valid_session
       assigns(:action).should be_a_new(Action)
     end
   end
 
   describe "GET edit" do
-    it "assigns the requested action as @action" do
+    it "assigns the requested action as @response" do
       action = Action.create! valid_attributes
       get :edit, {:id => action.to_param}, valid_session
       assigns(:action).should eq(action)
@@ -73,7 +73,7 @@ describe ActionsController do
         }.to change(Action, :count).by(1)
       end
 
-      it "assigns a newly created action as @action" do
+      it "assigns a newly created action as @response" do
         post :create, {:action => valid_attributes}, valid_session
         assigns(:action).should be_a(Action)
         assigns(:action).should be_persisted
@@ -86,7 +86,7 @@ describe ActionsController do
     end
 
     describe "with invalid params" do
-      it "assigns a newly created but unsaved action as @action" do
+      it "assigns a newly created but unsaved action as @response" do
         # Trigger the behavior that occurs when invalid params are submitted
         Action.any_instance.stub(:save).and_return(false)
         post :create, {:action => { "ticket_id" => "invalid value" }}, valid_session
@@ -114,7 +114,7 @@ describe ActionsController do
         put :update, {:id => action.to_param, :action => { "ticket_id" => "1" }}, valid_session
       end
 
-      it "assigns the requested action as @action" do
+      it "assigns the requested action as @response" do
         action = Action.create! valid_attributes
         put :update, {:id => action.to_param, :action => valid_attributes}, valid_session
         assigns(:action).should eq(action)
@@ -128,7 +128,7 @@ describe ActionsController do
     end
 
     describe "with invalid params" do
-      it "assigns the action as @action" do
+      it "assigns the action as @response" do
         action = Action.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Action.any_instance.stub(:save).and_return(false)

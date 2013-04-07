@@ -49,6 +49,7 @@ class ResponsesController < ApplicationController
 
     respond_to do |format|
       if @response.save
+        @response.send_response_notification
         format.html { redirect_to @response.ticket, notice: 'Response was successfully created.' }
         format.json { render json: @response, status: :created, location: @response }
       else

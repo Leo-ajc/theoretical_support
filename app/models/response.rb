@@ -5,4 +5,9 @@ class Response < ActiveRecord::Base
 
   belongs_to :ticket
   belongs_to :user
+
+  def send_response_notification
+    ClientMailer.send_response_notification(self).deliver
+  end
+
 end

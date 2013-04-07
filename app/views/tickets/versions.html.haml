@@ -1,8 +1,34 @@
-= @ticket.versions.each do |version|
-  - version.recify = ticket
-  = "Changed by: #{User.find(version.whodunnit.to_i).email}, #{time_ago_in_words(version.created_at)}"
-  = "Event: #{version.event}"
-  =# button_to "New", :action => "restore_ticket/"
-  = button_to 'restore', '', :class => 'btn btn-success'
-  = render :partial => 'list', :locals => {:ticket => version.recify}
+%table.table
+  %tr
+    %th Changed by
+    %th Event
+    %th Status
+    %th Assigned to
+    %th Body
+    %th updated_at
+    %th
+
+    -# [1..-1] first element/version is the creation of the record and is blank.
+    - @ticket.versions[1..-1].each do |version|
+      - ticket = version.reify
+      %tr
+        %td= User.find(version.whodunnit.to_i).email
+        %td= version.event
+        %td= ticket.status.description
+        %td= (ticket.user ? ticket.user.email : '')
+        %td= (ticket ? ticket.body : '-')
+        %td= version.created_at
+        %td
+          = button_to 'restore', restore_ticket_url(:id => @ticket.id, :timestamp => version.created_at), :class => 'btn btn-success'
+
+    %tr.success
+      %td
+      %td
+      %td= @ticket.status.description
+      %td= (@ticket.user ? @ticket.user.email : '')
+      %td= @ticket.body
+      %td
+        %strong Current
+      %td
+
 

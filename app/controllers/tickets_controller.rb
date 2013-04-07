@@ -22,9 +22,15 @@ class TicketsController < ApplicationController
 
   def versions
     @ticket = Ticket.find(params[:id])
-    @ticket = @ticket.version_at(params[:timestamp]).recify
-    @ticket.save
   end
+
+  def restore
+    @ticket = Ticket.find(params[:id])
+    @ticket = @ticket.version_at(Time.zone.parse(params[:timestamp])).previous_version
+    @ticket.save
+    redirect_to ticket_url(:id => @ticket.id)
+  end
+
 
   # GET /tickets
   # GET /tickets.json

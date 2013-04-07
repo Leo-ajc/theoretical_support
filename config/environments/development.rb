@@ -30,8 +30,8 @@ SupportFu::Application.configure do
     domain: "example.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: 'leo.a.jarrett@gmail.com',
-    password: '97512206'
+    user_name: 'emailserverprototypetesting@gmail.com',
+    password: 'fiWeslonpecumcijvucDygVuf'
   }
 
   # Print deprecation notices to the Rails logger

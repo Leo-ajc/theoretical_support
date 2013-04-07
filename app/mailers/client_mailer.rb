@@ -6,4 +6,9 @@ class ClientMailer < ActionMailer::Base
     mail :to => @ticket.email, :subject => "Your ticket has been created"
   end
 
+  def send_response_notification(response)
+    @response = response
+    mail :to => response.ticket.email, :subject => "RE: Your support ticket"
+  end
+
 end
