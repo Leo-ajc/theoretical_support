@@ -4,7 +4,6 @@ class Ticket < ActiveRecord::Base
   attr_accessible :body, :email, :department_id, :user_id, :status_id, :name
   attr_accessor :name # non-db attribute. For collecting the client name while creating a new Ticket
   validates_presence_of :email, :body
-  validates :email, :uniqueness => true, :on => :create
   validates :email, :format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}
 
   belongs_to :department
